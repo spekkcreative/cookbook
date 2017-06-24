@@ -5,4 +5,7 @@ node[:deploy].each do |app_name, deploy|
     cwd "#{deploy[:deploy_to]}/current"
     code "curl -sS https://getcomposer.org/installer | php && php composer.phar install --no-dev"
   end
+  yum_package 'php56' do
+      action :install
+  end
 end
